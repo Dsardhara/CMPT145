@@ -45,7 +45,7 @@ def replace(input_str: str, target: str, replacement: str) -> str:
     else:
         i = 0
         while i < inp_len:
-            if input_str[i:i+targ_len] == target:
+            if input_str[i:i + targ_len] == target:
                 new_str += replacement
                 i += targ_len
             else:
@@ -54,7 +54,7 @@ def replace(input_str: str, target: str, replacement: str) -> str:
     return new_str
 
 
-def grade_letter(score:int) -> str:
+def grade_letter(score: int) -> str:
     """
     Purpose: Get the grade letter related to the score passed in.
 
@@ -82,6 +82,7 @@ def grade_letter(score:int) -> str:
         letter = "F"
     return letter
 
+
 def sort_students_into_grades(student_list: list) -> dict:
     """
     Purpose: Goes through a list of dictionaries adding student names to the appropriate dictionary grade letter
@@ -96,52 +97,54 @@ def sort_students_into_grades(student_list: list) -> dict:
             Contains the keys "A","B","C","D","F","Invalid"
     """
     return {}
+
+
 ################### DO NOT ALTER CODE ABOVE ###################################
 
 
 # TODO: Create tests for functions above
 
-#for first function
-test = [50,0]
+# for first function
+test = [50, 0]
 expected = 50
-result = gcd(test[0],test[1])
+result = gcd(test[0], test[1])
 if result != expected:
     print("Testing gcd() with", test, "   Expected:", expected, " Got: ", result)
 
-test = [397,1000]
+test = [397, 1000]
 expected = -1
-result = gcd(test[0],test[1])
+result = gcd(test[0], test[1])
 if result != expected:
     print("Testing gcd() with", test, "   Expected:", expected, " Got: ", result)
 
-test = [500,-239]
+test = [500, -239]
 expected = 1
-result = gcd(test[0],test[1])
+result = gcd(test[0], test[1])
 if result != expected:
     print("Testing gcd() with", test, "   Expected:", expected, " Got: ", result)
 
-#for second function
+# for second function
 
 
-test = ['Hii, milli!','milli','stranger thing']
+test = ['Hii, milli!', 'milli', 'stranger thing']
 expected = 'Hii, stranger thing!'
-result = replace(test[0],test[1],test[2])
+result = replace(test[0], test[1], test[2])
 if result != expected:
     print("Testing replace() with", test, "   Expected:", expected, " Got: ", result)
 
-test = ['Hii,hii,HII!','hii','hello']
+test = ['Hii,hii,HII!', 'hii', 'hello']
 expected = 'Hii,hello,HII!'
-result = replace(test[0],test[1],test[2])
+result = replace(test[0], test[1], test[2])
 if result != expected:
     print("Testing replace() with", test, "   Expected:", expected, " Got: ", result)
 
-test = ['iiii','ii','iii']
+test = ['iiii', 'ii', 'iii']
 expected = 'iiiii'
-result = replace(test[0],test[1],test[2])
+result = replace(test[0], test[1], test[2])
 if result != expected:
     print("Testing replace() with", test, "   Expected:", expected, " Got: ", result)
 
-#for third function
+# for third function
 test = [-10]
 expected = 'Invalid'
 result = grade_letter(test[0])
@@ -160,7 +163,7 @@ result = grade_letter(test[0])
 if result != expected:
     print("Testing grade_letter() with", test, "   Expected:", expected, " Got: ", result)
 
-#test cases for fouth function
+# test cases for fouth function
 
 test = []
 expected = {
@@ -194,7 +197,6 @@ result = sort_students_into_grades(test)
 if result != expected:
     print("Testing sort_students_into_grades() with", test, "   Expected:", expected, " Got: ", result)
 
-
 test = [
     {"name": "abhi", "grade": "A"},
     {"name": "jack ryan", "grade": "B"},
@@ -213,6 +215,7 @@ expected = {
 result = sort_students_into_grades(test)
 if result != expected:
     print("Testing sort_students_into_grades() with", test, "   Expected:", expected, " Got: ", result)
+
 
 # TODO Create test driver for whitebox tested functions
 def white_box_test_driver():
@@ -253,6 +256,67 @@ def white_box_test_driver():
 
 
 # TODO: Create test driver for blackbox tested functions
+def black_box_test_driver():
+    # Test gcd function
+    print("Testing gcd function:")
+    gcd_test_cases = [
+        {"input": (18, 9), "expected_output": 9},
+        {"input": (0, 7), "expected_output": 7},
+        {"input": (1000, 500), "expected_output": -1},
+        {"input": (-12, 8), "expected_output": 4},
+    ]
+    for test_case in gcd_test_cases:
+        input_val1, input_val2 = test_case["input"]
+        expected_output = test_case["expected_output"]
+        output = gcd(input_val1, input_val2)
+        print(
+            f"Input: {input_val1}, {input_val2} | Output: {output} | Expected: {expected_output} | Pass: {output == expected_output}")
 
+    # Test replace function
+    print("\nTesting replace function:")
+    replace_test_cases = [
+        {"input": ("Hello, world!", "world", "earth"), "expected_output": "Hello, earth!"},
+        {"input": ("", "abc", "xyz"), "expected_output": ""},
+        {"input": ("Test test", "test", ""), "expected_output": "Test "},
+    ]
+    for test_case in replace_test_cases:
+        input_str, target, replacement = test_case["input"]
+        expected_output = test_case["expected_output"]
+        output = replace(input_str, target, replacement)
+        print(
+            f"Input: '{input_str}', '{target}', '{replacement}' | Output: '{output}' | Expected: '{expected_output}' | Pass: {output == expected_output}")
+
+    # Test grade_letter function
+    print("\nTesting grade_letter function:")
+    grade_letter_test_cases = [
+        {"input": 110, "expected_output": "Invalid"},
+        {"input": 100, "expected_output": "A"},
+        {"input": 73, "expected_output": "C"},
+    ]
+    for test_case in grade_letter_test_cases:
+        input_score = test_case["input"]
+        expected_output = test_case["expected_output"]
+        output = grade_letter(input_score)
+        print(
+            f"Input: {input_score} | Output: {output} | Expected: {expected_output} | Pass: {output == expected_output}")
+
+    # Test sort_students_into_grades function
+    print("\nTesting sort_students_into_grades function:")
+    students = [
+        {"name": "David", "grade": "D"},
+        {"name": "Eve", "grade": "F"},
+        {"name": "Frank", "grade": "Invalid"},
+        {"name": "Grace", "grade": "B"},
+        {"name": "Henry", "grade": "A"},
+    ]
+    expected_output = {
+        "A": ["Henry"],
+        "B": ["Grace"],
+        "C": [],
+        "D": ["David"],
+        "F": ["Eve"],
+        "Invalid": ["Frank"],
+    }
+    output = sort_students_into_grades(students)
+    print(f"Output: {output} | Expected: {expected_output} | Pass: {output == expected_output}")
 # TODO: Create test driver to test all functions
-
