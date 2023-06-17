@@ -21,7 +21,19 @@ def copy_list_of_lists(data: list) -> list:
         list - a new list with new internal lists created by copying the
      information from the list passed in.
     """
-    new_list = data
+    # new_list = data
+
+    #CHANGE
+    #ERROR: it was refusing to take last element into count(list).
+            # it was not accepting empty list
+
+    new_list=[]
+    elements=[]
+    for info in data:
+        for _elements in info:
+            elements.append(_elements)
+        new_list.append(elements)
+        elements=[]
     return new_list
 
 def copy_dict_of_dicts(data: dict) -> dict:
@@ -412,8 +424,9 @@ def run_tests(run_all=False):
         stats(PartARan, PartA_ls, PartA_dict, PartBRan, PartB_dpcp, PartB_rm, PartB_filt)
 
 
-if __name__ == '__main__':
+if __name__ != '__main__':
     # TODO - Run to see what is working
     run_tests()
     # WARNING: Just because a test case passes does not mean there is not bugs present
 
+test_partA()
