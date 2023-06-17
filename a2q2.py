@@ -142,8 +142,6 @@ if result != expected:
     print("Testing replace() with", test, "   Expected:", expected, " Got: ", result)
 
 #for third function
-print(grade_letter(85))
-
 test = [-10]
 expected = 'Invalid'
 result = grade_letter(test[0])
@@ -162,6 +160,59 @@ result = grade_letter(test[0])
 if result != expected:
     print("Testing grade_letter() with", test, "   Expected:", expected, " Got: ", result)
 
+#test cases for fouth function
+
+test = []
+expected = {
+    "A": [],
+    "B": [],
+    "C": [],
+    "D": [],
+    "F": [],
+    "Invalid": []
+}
+result = sort_students_into_grades(test)
+if result != expected:
+    print("Testing sort_students_into_grades() with", test, "   Expected:", expected, " Got: ", result)
+
+test = [
+    {"name": "abhi", "grade": "A"},
+    {"name": "benstock", "grade": "A"},
+    {"name": "Charlie", "grade": "B"},
+    {"name": "milli", "grade": "B"},
+    {"name": "morning star", "grade": "C"}
+]
+expected = {
+    "A": ["abhi", "benstock"],
+    "B": ["Charlie", "milli"],
+    "C": ["morning star"],
+    "D": [],
+    "F": [],
+    "Invalid": []
+}
+result = sort_students_into_grades(test)
+if result != expected:
+    print("Testing sort_students_into_grades() with", test, "   Expected:", expected, " Got: ", result)
+
+
+test = [
+    {"name": "abhi", "grade": "A"},
+    {"name": "jack ryan", "grade": "B"},
+    {"name": "Charlie", "grade": "Z"},
+    {"name": "milli", "grade": "D"},
+    {"name": "morning star", "grade": "F"}
+]
+expected = {
+    "A": ["abhi"],
+    "B": ["jack ryan"],
+    "C": [],
+    "D": ["milli"],
+    "F": ["morning star"],
+    "Invalid": ["Charlie"]
+}
+result = sort_students_into_grades(test)
+if result != expected:
+    print("Testing sort_students_into_grades() with", test, "   Expected:", expected, " Got: ", result)
 
 
 # TODO Create test driver for whitebox tested functions
