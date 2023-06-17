@@ -117,7 +117,15 @@ def filter_from_2DList(data: list, val) -> list:
     Return:
         list - a new list with no instances of the value passed in.
     """
-    return []
+    filtered_data = []
+    for sublist in data:
+        filtered_sublist = []
+        for item in sublist:
+            if item != val:
+                filtered_sublist.append(item)
+        filtered_data.append(filtered_sublist)
+
+    return filtered_data
 
 
 ### TESTING ###
@@ -450,9 +458,7 @@ def run_tests(run_all=False):
         stats(PartARan, PartA_ls, PartA_dict, PartBRan, PartB_dpcp, PartB_rm, PartB_filt)
 
 
-if __name__ != '__main__':
+if __name__ == '__main__':
     # TODO - Run to see what is working
     run_tests()
     # WARNING: Just because a test case passes does not mean there is not bugs present
-
-test_partB()
