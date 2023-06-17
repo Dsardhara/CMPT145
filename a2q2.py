@@ -122,7 +122,6 @@ if result != expected:
 
 #for second function
 
-print(replace("aaaa",'aa','aaa'))
 
 test = ['Hii, milli!','milli','stranger thing']
 expected = 'Hii, stranger thing!'
@@ -143,6 +142,27 @@ if result != expected:
     print("Testing replace() with", test, "   Expected:", expected, " Got: ", result)
 
 #for third function
+print(grade_letter(85))
+
+test = [-10]
+expected = 'Invalid'
+result = grade_letter(test[0])
+if result != expected:
+    print("Testing grade_letter() with", test, "   Expected:", expected, " Got: ", result)
+
+test = [100]
+expected = 'A'
+result = grade_letter(test[0])
+if result != expected:
+    print("Testing grade_letter() with", test, "   Expected:", expected, " Got: ", result)
+
+test = [00]
+expected = 'F'
+result = grade_letter(test[0])
+if result != expected:
+    print("Testing grade_letter() with", test, "   Expected:", expected, " Got: ", result)
+
+
 
 # TODO Create test driver for whitebox tested functions
 # TODO: Create test driver for blackbox tested functions
