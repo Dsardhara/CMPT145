@@ -120,6 +120,30 @@ result = gcd(test[0],test[1])
 if result != expected:
     print("Testing gcd() with", test, "   Expected:", expected, " Got: ", result)
 
+#for second function
+
+print(replace("aaaa",'aa','aaa'))
+
+test = ['Hii, milli!','milli','stranger thing']
+expected = 'Hii, stranger thing!'
+result = replace(test[0],test[1],test[2])
+if result != expected:
+    print("Testing replace() with", test, "   Expected:", expected, " Got: ", result)
+
+test = ['Hii,hii,HII!','hii','hello']
+expected = 'Hii,hello,HII!'
+result = replace(test[0],test[1],test[2])
+if result != expected:
+    print("Testing replace() with", test, "   Expected:", expected, " Got: ", result)
+
+test = ['iiii','ii','iii']
+expected = 'iiiii'
+result = replace(test[0],test[1],test[2])
+if result != expected:
+    print("Testing replace() with", test, "   Expected:", expected, " Got: ", result)
+
+#for third function
+
 # TODO Create test driver for whitebox tested functions
 # TODO: Create test driver for blackbox tested functions
 # TODO: Create test driver to test all functions
