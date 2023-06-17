@@ -23,18 +23,19 @@ def copy_list_of_lists(data: list) -> list:
     """
     # new_list = data
 
-    #CHANGE
-    #ERROR: it was refusing to take last element into count(list).
-            # it was not accepting empty list
+    # CHANGE
+    # ERROR: it was refusing to take last element into count(list).
+    # it was not accepting empty list
 
-    new_list=[]
-    elements=[]
+    new_list = []
+    elements = []
     for info in data:
         for _elements in info:
             elements.append(_elements)
         new_list.append(elements)
-        elements=[]
+        elements = []
     return new_list
+
 
 def copy_dict_of_dicts(data: dict) -> dict:
     """
@@ -50,15 +51,24 @@ def copy_dict_of_dicts(data: dict) -> dict:
      information from the list passed in.
     """
     new_dict = {}
-    for element in data:
-        if data[element] is data:
-            new_dict[element] = data[element]
+    # for element in data:
+    #     if data[element] is data:
+    #         new_dict[element] = data[element]
+
+    # CHANGE
+    # Error: The error was like nested dic was not able to idnetify to deep copying.
+    for key, value in data.items():
+        if isinstance(value, dict):
+            new_dict[key] = copy_dict_of_dicts(value)
+        else:
+            new_dict[key] = value
+
     return new_dict
 
 
 # TODO PART B - Implement the following functions based on the description
 
-def deep_copy_list_of_dicts(data:list) -> list:
+def deep_copy_list_of_dicts(data: list) -> list:
     """
     Purpose: Deep copy the list passed in.
     Pre-condition:
@@ -68,9 +78,17 @@ def deep_copy_list_of_dicts(data:list) -> list:
     Return:
         list - deep copy of the list it's values are returned.
     """
-    return []
+    new_list1 = []
+    int_dict = {}
+    for info in data:
+        for key, value in info.items():
+            int_dict[key] = value
+        new_list1.append(int_dict)
+        int_dict = {}
+    return new_list1
 
-def remove_from_2DList(data:list, val) -> list:
+
+def remove_from_2DList(data: list, val) -> list:
     """
     Purpose: Remove all instances of val from data
     Pre-condition:
@@ -84,7 +102,7 @@ def remove_from_2DList(data:list, val) -> list:
     return []
 
 
-def filter_from_2DList(data:list, val) -> list:
+def filter_from_2DList(data: list, val) -> list:
     """
     Purpose: Create a new list copied from data with all instances of val removed.
     Pre-condition:
@@ -96,6 +114,7 @@ def filter_from_2DList(data:list, val) -> list:
         list - a new list with no instances of the value passed in.
     """
     return []
+
 
 ### TESTING ###
 
@@ -110,11 +129,11 @@ def test_partA():
         case3 = [[1, 2, 3, 5], ["a", "b", "c", "f"]]
         test_case = [
             {"input": case1,
-            "output": copy_list_of_lists(case1),
-            "reason": "Empty list should not impact functions success"},
+             "output": copy_list_of_lists(case1),
+             "reason": "Empty list should not impact functions success"},
             {"input": case2,
-            "output": copy_list_of_lists(case2),
-            "reason": "List with one internal list empty should still be able to be copied"},
+             "output": copy_list_of_lists(case2),
+             "reason": "List with one internal list empty should still be able to be copied"},
             {"input": case3,
              "output": copy_list_of_lists(case3),
              "reason": "References should be different since it is a list of lists"}
@@ -129,7 +148,7 @@ def test_partA():
                 fails += 1
                 print("Test List Copy\nERROR: Values are not the same\n", test)
             # Changing list test["input"] should not impact list in test["output"]
-            test["input"].append([-1,2,4])
+            test["input"].append([-1, 2, 4])
             if test["input"] == test["output"]:
                 fails += 1
                 print("Test List Copy\nERROR: Outer list values should no longer be the the same\n", test)
@@ -155,21 +174,21 @@ def test_partA():
         fails = 0
         # Empty List
         case1 = {}
-        case2 = {"a":{},
-                 "b":{1:-1,
-                      2:-2}}
-        case3 = {"a": {1:0,
-                       2:1,
-                       3:2},
+        case2 = {"a": {},
+                 "b": {1: -1,
+                       2: -2}}
+        case3 = {"a": {1: 0,
+                       2: 1,
+                       3: 2},
                  "b": {1: -1,
                        2: -2}}
         test_case = [
             {"input": case1,
-            "output": copy_dict_of_dicts(case1),
-            "reason": "Empty dict should not impact function success"},
+             "output": copy_dict_of_dicts(case1),
+             "reason": "Empty dict should not impact function success"},
             {"input": case2,
-            "output": copy_dict_of_dicts(case2),
-            "reason": "Dict with one internal blank dict should still be able to be copied"},
+             "output": copy_dict_of_dicts(case2),
+             "reason": "Dict with one internal blank dict should still be able to be copied"},
             {"input": case3,
              "output": copy_dict_of_dicts(case3),
              "reason": "References should be different for internal dicts too"}
@@ -184,7 +203,7 @@ def test_partA():
                 fails += 1
                 print("Test Dict Copy\nERROR: Values are not the same\n", test)
             # Changing list test["input"] should not impact list in test["output"]
-            test["input"]["c"]={"z":9}
+            test["input"]["c"] = {"z": 9}
             if test["input"] == test["output"]:
                 fails += 1
                 print("Test Dict Copy\nERROR: Outer list values should no longer be the the same\n", test)
@@ -203,7 +222,8 @@ def test_partA():
         # reset case3
         case3["a"][1] = 0
         return tests_ran, fails
-    ls_ran,ls_fail = test_ls()
+
+    ls_ran, ls_fail = test_ls()
     dict_ran, dict_fail = test_dict()
     return ls_ran + dict_ran, ls_fail, dict_fail
 
@@ -214,10 +234,10 @@ def test_partB():
         fails = 0
         case1 = []
         case2 = [{"a": 30,
-                     "b": 50},
+                  "b": 50},
                  {}]
-        case3 = [{"a":90,
-                  "b":19},
+        case3 = [{"a": 90,
+                  "b": 19},
                  {"a": 20,
                   "b": 12}]
         test_case = [
@@ -241,7 +261,7 @@ def test_partB():
                 fails += 1
                 print("Test Deep Copy \nERROR: Values are not the same\n", test)
             # Changing list test["input"] should not impact list in test["output"]
-            test["input"].append({"z":9})
+            test["input"].append({"z": 9})
             if test["input"] == test["output"]:
                 fails += 1
                 print("Test Deep Copy \nERROR: Outer list values should no longer be the the same\n", test)
@@ -263,21 +283,21 @@ def test_partB():
     def test_remove():
         tests_ran = 0
         fails = 0
-        case1 = [[],[4]]
-        case2 = [[1,2,3],[45,2,14],[78,47,3,56],[9,3,7]]
-        case3 = [[1,2,1],[1,2,3],[1,23,4],[1,21]]
+        case1 = [[], [4]]
+        case2 = [[1, 2, 3], [45, 2, 14], [78, 47, 3, 56], [9, 3, 7]]
+        case3 = [[1, 2, 1], [1, 2, 3], [1, 23, 4], [1, 21]]
         test_case = [
-            {"input": (case1,4),
-             "output": remove_from_2DList(case1,4),
+            {"input": (case1, 4),
+             "output": remove_from_2DList(case1, 4),
              "reason": "Empty list should not impact function success"},
-            {"input": (case1,2),
-             "output": remove_from_2DList(case1,2),
+            {"input": (case1, 2),
+             "output": remove_from_2DList(case1, 2),
              "reason": "Removing value that does not exist should not impact function success"},
-            {"input": (case2,3),
-             "output": remove_from_2DList(case2,3),
+            {"input": (case2, 3),
+             "output": remove_from_2DList(case2, 3),
              "reason": "Lists of different sizes should not impact function success"},
-            {"input": (case3,1),
-             "output": remove_from_2DList(case3,1),
+            {"input": (case3, 1),
+             "output": remove_from_2DList(case3, 1),
              "reason": "Internal lists should not impact function success"}
         ]
         for test in test_case:
@@ -303,7 +323,7 @@ def test_partB():
             for inner in test["output"]:
                 if test["input"][1] in inner:
                     fails += 1
-                    print("Test Remove \nERROR: \n", test, "In internal list(s):\n",inner)
+                    print("Test Remove \nERROR: \n", test, "In internal list(s):\n", inner)
 
             # Just ran 4 tests
             tests_ran += 4
@@ -377,8 +397,9 @@ def test_partB():
     filt_ran, filt_fail = test_filter()
     return lsdict_ran + rm_ran + filt_ran, lsdict_fail, rm_fail, filt_fail
 
+
 def run_tests(run_all=False):
-    def stats(Arun,Als,Adict,Brun,Bcp,Brm,Bflt):
+    def stats(Arun, Als, Adict, Brun, Bcp, Brm, Bflt):
         print("Total Tests Ran: ", Arun + Brun)
         print("PartA Tests Ran: ", Arun)
         print("PartA Fails:", Als + Adict)
@@ -390,6 +411,7 @@ def run_tests(run_all=False):
         print("\t Remove From List Of List Fails:", Brm)
         print("\t Filter List Of List Fails:", Bflt)
         exit()
+
     PartARan, PartA_ls, PartA_dict = test_partA()
     if run_all:
         PartBRan, PartB_dpcp, PartB_rm, PartB_filt = test_partB()
@@ -429,4 +451,4 @@ if __name__ != '__main__':
     run_tests()
     # WARNING: Just because a test case passes does not mean there is not bugs present
 
-test_partA()
+test_partB()
