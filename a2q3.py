@@ -99,8 +99,12 @@ def remove_from_2DList(data: list, val) -> list:
     Return:
         list - list with changes applied.
     """
-    return []
 
+    for sublist in data:
+        while val in sublist:
+            sublist.remove(val)
+
+    return data
 
 def filter_from_2DList(data: list, val) -> list:
     """
