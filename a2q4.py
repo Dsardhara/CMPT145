@@ -41,7 +41,14 @@ def leave_community(community: list, name:str) -> None:
     Return:
         None
     """
-    return
+    for person in community:
+        if name in person["friends"]:
+            person["friends"].remove(name)
+        if name in person["foes"]:
+            person["foes"].remove(name)
+    for person in community[:]:
+        if person["name"] == name:
+            community.remove(person)
 
 def are_community_besties(community: list, name1: str, name2: str) -> bool:
     """
@@ -61,6 +68,7 @@ def are_community_besties(community: list, name1: str, name2: str) -> bool:
         list associated with the key "friends".
         Returns True if on both "friends" and "foes" list simultaneously
     """
+
     return False
 
 def get_all_community_besties(community: list, name: str) -> list:
