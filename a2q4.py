@@ -21,8 +21,11 @@ def get_patient_people(community: list):
     Return:
         list of dictionaries of those with no foes.
     """
-    return []
-
+    patient_people = []
+    for person in community:
+        if person['foes'] == []:
+            patient_people.append(person)
+    return patient_people
 def leave_community(community: list, name:str) -> None:
     """
     Purpose: Go through the list of dictionaries passed in removing name from lists for keys "friends"
