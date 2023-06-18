@@ -93,7 +93,13 @@ def get_all_community_besties(community: list, name: str) -> list:
         list associated with the key "friends"
         Still added to list if names are simultaneously in lists associated with "friends" and "foes"
     """
-    return []
+    besties = []
+    for person in community:
+        if person["name"] == name:
+            for friend in person["friends"]:
+                if are_community_besties(community, name, friend):
+                    besties.append(friend)
+    return besties
 
 
 ### TESTS
@@ -354,6 +360,7 @@ def testing():
     print("DONE TESTING: get_all_community_besties")
     print("TESTING COMPLETE", total_tests, "PASSED!")
 
-
 if __name__=="__main__":
     testing()
+
+
