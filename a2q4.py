@@ -68,7 +68,13 @@ def are_community_besties(community: list, name1: str, name2: str) -> bool:
         list associated with the key "friends".
         Returns True if on both "friends" and "foes" list simultaneously
     """
-
+    for person in community:
+        if person["name"] == name1:
+            if name2 in person["friends"]:
+                return True
+        if person["name"] == name2:
+            if name1 in person["friends"]:
+                return True
     return False
 
 def get_all_community_besties(community: list, name: str) -> list:
