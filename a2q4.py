@@ -1,25 +1,10 @@
-###############################################################################
-# CMPT 145 Course material
-# Original Author: Lauresa Stilling
-# Date Created:   31 May 2023
-# Last Edited:    1 June 2023
-#
-# All rights reserved.
-#
-# This document contains resources for homework assigned to students of
-# CMPT 145 and shall not be distributed without permission.  Posting this
-# file to a public or private website, or providing this file to a person
-# not registered in CMPT 145, constitutes Academic Misconduct, according
-# to the University of Saskatchewan Policy on Academic Misconduct.
-#
-# Synopsis:
-#    Testing; relevant to Chapter 5, 6, 7
-###############################################################################
-
-# TODO: Fill in your information below
-# Student Name
-# NSID
-# Student Number
+# Name: Darshan Sardhara
+# Instructor Name: Lauresa
+# NSID: WLZ670
+# Course Name: CMPT 145
+# Student ID: 11355677
+# section Number: 01
+# Course number: 41442
 
 # TODO: TEST DRIVEN DEVELOPMENT
 
@@ -264,9 +249,9 @@ def testing():
                      "expect": False,
                      "output": are_community_besties(case5,"Elmer", "Daffy"),
                      "message": "Neither are within the community"},
-                      {"input": (case5, "Tweety", "Lola"),
+                      {"input": (case5, "Tweety", "Granny"),
                        "expect": True,
-                       "output": are_community_besties(case5,"Tweety", "Lola"),
+                       "output": are_community_besties(case5, "Tweety", "Granny"),
                        "message": "Granny and Tweety are in each other's friends lists"},
                       {"input": (case6, "Bugs", ""),
                        "expect": True,
@@ -355,4 +340,3 @@ def testing():
 
 if __name__=="__main__":
     testing()
-
