@@ -36,7 +36,7 @@ def to_string(node_chain):
                 # represent the next with an arrow-like figure
                 result += ' *-]-->[ {} |'.format(str(value))
 
-        # at the end of the chain, use '/'
+         # at the end of the chain, use '/'
         result += ' / ]'
 
     return result
