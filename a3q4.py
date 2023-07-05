@@ -94,8 +94,16 @@ class LList(object):
             :return True, idx if the val appears in self
             :return False, None if the vale does not appear in self
         """
+        numb = self._head
+        index = 0
 
-        pass
+        while numb is not None:
+            if numb.get_data() == val:
+                return tuple([True, index])
+            numb = numb.get_next()
+            index += 1
+
+        return tuple([False, None])
 
     def remove_from_front(self):
         """
