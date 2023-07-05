@@ -26,10 +26,7 @@ class LList(object):
         Return:
             :return True if the list has no data, or False otherwise
         """
-        if self._size == []:
-            return True
-        else:
-            return False
+        return self._size == 0
 
     def size(self):
         """
@@ -53,6 +50,15 @@ class LList(object):
         Return:
             :return None
         """
+        new_node = n.Node(val)
+        if self._head is None:  # If the list is empty
+            self._head = new_node
+            self._tail = new_node
+        else:
+            new_node.set_next(self._head)
+            self._head = new_node
+        self._size += 1
+
         pass
 
     def append(self, val):
@@ -67,7 +73,14 @@ class LList(object):
         Return:
             :return None
         """
-        pass
+        new_node = n.Node(val)
+        if self._head is None:
+            self._head = new_node
+        else:
+            self._tail.set_next(new_node)
+        self._tail = new_node
+        self._size += 1
+
 
     def get_index_of_value(self, val):
         """
@@ -81,6 +94,7 @@ class LList(object):
             :return True, idx if the val appears in self
             :return False, None if the vale does not appear in self
         """
+
         pass
 
     def remove_from_front(self):
@@ -136,3 +150,4 @@ class LList(object):
             :return True if the index was valid, False otherwise
         """
         pass
+
