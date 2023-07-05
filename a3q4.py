@@ -192,4 +192,13 @@ class LList(object):
         Return:
             :return True if the index was valid, False otherwise
         """
-        pass
+        if idx < 0 or self._size <= idx:
+            return False
+        numb = self._head
+        index = 0
+
+        for i in range(idx):
+            numb=numb.get_next()
+        numb.set_data(val)
+        return True
+
