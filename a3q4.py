@@ -166,7 +166,19 @@ class LList(object):
             :return (True, val) if val is stored at index idx and idx is valid
             :return (False, None) if the idx is not valid for the list
         """
-        pass
+
+        if idx < 0 or self._size <= idx:
+            return tuple([False, None])
+        numb = self._head
+        index = 0
+
+        while numb is not None:
+            if index == idx:
+                val=numb.get_data()
+                return tuple([True, val])
+            numb = numb.get_next()
+            index += 1
+
 
     def set_data(self, idx, val):
         """
