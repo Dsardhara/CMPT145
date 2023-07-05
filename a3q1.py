@@ -13,7 +13,7 @@ while True:
 
         container = Stack.Stack()
         while True:
-            print("Please enter a Symbol :")
+            print("Please enter a command :")
             Symbol = input()
             if Symbol == "add":
                 print("Please enter a value to add :")
@@ -40,7 +40,7 @@ while True:
 
         container = Queue.Queue()
         while True:
-            print("Please enter a Symbol :")
+            print("Please enter a command :")
             Symbol = input()
             if Symbol == "add":
                 print("Please enter a value to add :")
