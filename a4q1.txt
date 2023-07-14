@@ -1,0 +1,37 @@
+# Name: Darshan Sardhara
+# Instructor Name: Lauresa
+# NSID: WLZ670
+# Course Name: CMPT 145
+# Student ID: 11355677
+# section Number: 01
+# Course number: 41442
+
+(a) The function definition begins at line 16, where the function "fizzbuzz" is defined.
+
+What makes it similar to Python:
+- Like in Python, the function name is followed by parentheses and a colon.
+- The body of the function is indented.
+
+What makes it differ from Python:
+- In C, the return type of the function is specified before the function name.
+
+(b) The function call occurs at line 38, where the function "fizzbuzz" is called.
+
+What makes it similar to Python:
+- Like in Python, the function name is followed by parentheses.
+
+What makes it differ from Python:
+- In C, the function call does not have any assignment or expression around it.
+
+(c)
+- The name of a variable: "i" (line 17)
+- The name of a parameter: "n" (line 16)
+- The name of an argument: "input" (line 35)
+
+(d) Another concept recognized is the use of loops. It can be seen at lines 18 to 31, where the loop iterates from 1 to the value of n.	
+
+(e) The following code is a manual implementation of the FizzBuzz problem. It takes an input number from the user and then iterates from 1 to that input number. For each number, it checks if it is divisible by 3 and 5, in which case it prints "FizzBuzz". If it is only divisible by 3, it prints "Fizz". If it is only divisible by 5, it prints "Buzz". Otherwise, it prints the number itself. The output is printed on the console.
+
+(f) No external resources were used to answer these questions.
+
+(g) The time complexity of the program is O(n), where n is the input number. This is because the program iterates from 1 to the input number, performing constant time operations for each iteration. As the input number increases, the number of iterations and the time taken increase linearly.
