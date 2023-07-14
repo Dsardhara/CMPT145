@@ -31,4 +31,13 @@ def to_string(node_chain):
             return '[ {} | *-]-->{}'.format(str(value),result)
 
 
-print(to_string( n.Node(1, n.Node('two', n.Node(3)))))
+def copy(node_chain):
+    if node_chain is None:
+        return "Empty"
+    value = node_chain.get_data()
+    walker = node_chain.get_next()
+
+    copy_node = n.Node(value)
+    copy_node.set_next(copy(walker))
+    return copy_node
+
