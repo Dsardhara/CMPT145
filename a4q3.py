@@ -20,7 +20,7 @@ def to_string(node_chain):
         Return: A string representation of the nodes.
         """
     if node_chain is None:
-        return "Empty"
+        return "EMPTY"
     else:
         value = node_chain.get_data()
         walker = node_chain.get_next()
@@ -41,3 +41,25 @@ def copy(node_chain):
     copy_node.set_next(copy(walker))
     return copy_node
 
+def replace(node_chain, target, replacement):
+    """
+        Purpose:
+            Replaces each occurrence of the target value with the replacement
+        Pre-conditions:
+            :param node_chain: a node-chain, possibly empty
+            :param target: a value that might appear in the node chain
+            :param replacement: the value to replace the target
+        Post-conditions:
+            Each occurrence of the target value in the chain is replaced with
+            the replacement value.
+        Return:
+            None
+        """
+    if node_chain is None:
+        return 0
+    else:
+        walker = node_chain
+        value_of_node = walker.get_data()
+        if value_of_node == target:
+            walker.set_data(replacement)
+        return replace(walker.get_next(), target, replacement)
