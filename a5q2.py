@@ -6,6 +6,8 @@
 # section Number: 01
 
 import exampletrees as ex
+import treenode
+import provided_treefunctions as q
 
 
 def subst(tnode, t, r):
@@ -18,7 +20,7 @@ def subst(tnode, t, r):
     :return: None
     '''
     if tnode == None:
-        return 0
+        return None
     x = tnode.get_data()
     if x == t:
         x = tnode.set_data(r)
@@ -26,5 +28,27 @@ def subst(tnode, t, r):
     subst(tnode.get_left(), t, r)
 
 
-print(subst(ex.xtree, 5, 3))
-print(ex.xtree.get_data())
+def copy(tnode):
+    '''
+        Create an exact copy of the given tree, with completely new treenodes, but
+        exactly the same data values, in exactly the same places.
+
+        If tnode is None, return None. If tnode is not None, return a reference to the new tree.
+
+        :param tnode: The root node of the tree to be copied.
+        :return: A reference to the new tree or None if the original tree is None.
+        '''
+    nnode = treenode.Treenode
+    if tnode == None:
+        return None
+    nnode = treenode.Treenode(tnode.get_data())
+    nnode.set_left(copy(tnode.get_left()))
+    nnode.set_right(copy(tnode.get_right()))
+    return nnode
+
+
+print(q.is_leaf(copy(ex.xtree)) == q.is_leaf(ex.xtree))
+print(q.to_string(copy(ex.xtree), level=3) == q.to_string(ex.xtree, level=3))
+print(q.to_string(copy(ex.xtree), level=1))
+print(q.to_string(ex.xtree, level=1))
+# print(ex.xtree)
