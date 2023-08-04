@@ -47,8 +47,44 @@ def copy(tnode):
     return nnode
 
 
-print(q.is_leaf(copy(ex.xtree)) == q.is_leaf(ex.xtree))
-print(q.to_string(copy(ex.xtree), level=3) == q.to_string(ex.xtree, level=3))
-print(q.to_string(copy(ex.xtree), level=1))
-print(q.to_string(ex.xtree, level=1))
+def diff_sum_preorder(tnode):
+    '''
+    Perform a modified preorder traversal of the binary tree, alternately finding the difference and summation
+    of values. The value returned will be of the pattern X - Y + Z.
+    :param tnode: The root node of the binary tree.
+    :return: sum of this X - Y + Z.
+    '''
+    if tnode is None:
+        return 0
+
+    val = tnode.get_data()
+    l = diff_sum_preorder(tnode.get_left())
+    r = diff_sum_preorder(tnode.get_right())
+    sum = val - l + r
+    return sum
+
+
+def diff_sum_inorder(tnode):
+    '''
+        Perform a modified inorder traversal of the binary tree, alternately finding the difference and summation
+        of values. The value returned will be of the pattern X - Y + Z
+        :param tnode: The root node of the binary tree for which to perform the traversal.
+        :return: final result of X - Y + Z.
+        '''
+    if tnode is None:
+        return 0
+
+    l = diff_sum_inorder(tnode.get_left())
+    val = tnode.get_data()
+    r = diff_sum_inorder(tnode.get_right())
+    sum = l - val + r
+    return sum
+
+print(diff_sum_preorder(ex.atree))
+print(diff_sum_inorder(ex.atree))
+
+# print(q.is_leaf(copy(ex.xtree)) == q.is_leaf(ex.xtree))
+# print(q.to_string(copy(ex.xtree), level=3) == q.to_string(ex.xtree, level=3))
+# print(q.to_string(copy(ex.xtree), level=1))
+# print(q.to_string(ex.xtree, level=1))
 # print(ex.xtree)
