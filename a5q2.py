@@ -80,11 +80,23 @@ def diff_sum_inorder(tnode):
     sum = l - val + r
     return sum
 
-print(diff_sum_preorder(ex.atree))
-print(diff_sum_inorder(ex.atree))
 
-# print(q.is_leaf(copy(ex.xtree)) == q.is_leaf(ex.xtree))
-# print(q.to_string(copy(ex.xtree), level=3) == q.to_string(ex.xtree, level=3))
-# print(q.to_string(copy(ex.xtree), level=1))
-# print(q.to_string(ex.xtree, level=1))
-# print(ex.xtree)
+def diff_sum_postorder(tnode):
+    '''
+    Perform a modified postorder traversal of the binary tree, alternately finding the difference and summation
+    of values. The value returned will be of the pattern X - Y + Z
+    :param tnode: The root node of the binary tree for which to perform the traversal.
+    :return: The result of the traversal in the form X - Y + Z.
+    '''
+
+    if tnode is None:
+        return 0
+
+    l = diff_sum_inorder(tnode.get_left())
+    r = diff_sum_inorder(tnode.get_right())
+    val = tnode.get_data()
+
+    return val
+
+
+
