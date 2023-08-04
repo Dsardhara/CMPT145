@@ -1,0 +1,29 @@
+/student/wlz670
+.
+..
+a5q1.bash
+a5q1_log.txt
+a5q1_output.txt
+.bash_history
+.bashrc
+.cache
+.config
+.cshrc
+.login
+.profile
+.viminfo
+/student/wlz670/wlz670_black
+hello world
+hello world
+0a1
+> hello world
+    PID TTY          TIME CMD
+4115454 pts/46   00:00:00 bash
+4121620 pts/46   00:00:00 bash
+4122054 pts/46   00:00:00 sleep
+4122055 pts/46   00:00:00 ps
+course name: cmpt145
+Name : Darshan sardhara
+NSID : wlz670
+Student Number : 11355677
+Intersting fact : I have vivid interest in trading. I have been trading since 2 years.:
