@@ -1,15 +1,10 @@
-# CMPT 145 Course material
-# Copyright (c) 2017-2023 Michael C Horsch
-# All rights reserved.
-#
-# This document contains resources for homework assigned to students of
-# CMPT 145 and shall not be distributed without permission.  Posting this
-# file to a public or private website, or providing this file to a person
-# not registered in CMPT 145, constitutes Academic Misconduct, according
-# to the University of Saskatchewan Policy on Academic Misconduct.
-#
-# Synopsis:
-#    Question nodechain_sumcountreplace starter code
+# Name: Darshan Sardhara
+# Instructor Name: Lauresa
+# NSID: WLZ670
+# Course Name: CMPT 145
+# Student ID: 11355677
+# section Number: 01
+# Course number: 41442
 
 import node as n
 

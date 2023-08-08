@@ -54,6 +54,7 @@ def diff_sum_preorder(tnode):
     :param tnode: The root node of the binary tree.
     :return: sum of this X - Y + Z.
     '''
+
     if tnode is None:
         return 0
 
@@ -71,14 +72,15 @@ def diff_sum_inorder(tnode):
         :param tnode: The root node of the binary tree for which to perform the traversal.
         :return: final result of X - Y + Z.
         '''
+
     if tnode is None:
         return 0
 
     l = diff_sum_inorder(tnode.get_left())
-    val = tnode.get_data()
+    value = tnode.get_data()
     r = diff_sum_inorder(tnode.get_right())
-    sum = l - val + r
-    return sum
+    total = r - l + value
+    return total
 
 
 def diff_sum_postorder(tnode):
@@ -92,11 +94,14 @@ def diff_sum_postorder(tnode):
     if tnode is None:
         return 0
 
-    l = diff_sum_inorder(tnode.get_left())
-    r = diff_sum_inorder(tnode.get_right())
-    val = tnode.get_data()
+    x = tnode.get_data()
+    y = diff_sum_inorder(tnode.get_right())
+    z = diff_sum_inorder(tnode.get_left())
 
-    return val
-
-
-
+    # Alternating subtraction and addition
+    if tnode.get_left() is None:
+        return x - y
+    elif tnode.get_right() is None:
+        return x + z
+    else:
+        return x - y + z

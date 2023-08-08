@@ -33,7 +33,7 @@ def to_string(node_chain):
 
 def copy(node_chain):
     if node_chain is None:
-        return "Empty"
+        return None
     value = node_chain.get_data()
     walker = node_chain.get_next()
 

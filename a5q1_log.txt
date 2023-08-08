@@ -1,3 +1,11 @@
+# Name: Darshan Sardhara
+# Instructor Name: Lauresa
+# NSID: WLZ670
+# Course Name: CMPT 145
+# Student ID: 11355677
+# section Number: 01
+# Course number: 41442
+
 Script started on 2023-08-04 06:00:33-06:00 [TERM="xterm" TTY="/dev/pts/42" COLUMNS="168" LINES="46"]
 [?2004hwlz670@tux6:~> bash a5q1.bash > a5q1_output.txt
 [?2004l
