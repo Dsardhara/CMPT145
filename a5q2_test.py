@@ -70,7 +70,7 @@ if check_tree.to_string(expected_tree) != check_tree.to_string(tnode):
 test_item = 'tree with more than one node'
 tnode = tn.Treenode(3, tn.Treenode(5, tn.Treenode(9, None)), tn.Treenode(10, tn.Treenode(11, None)))
 expected_tree = tn.Treenode(3, tn.Treenode(5, tn.Treenode(9, None)), tn.Treenode(10, tn.Treenode(11, None)))
-reason = 'Empty binary tree'
+reason = 'tree with more than node'
 main.copy(tnode)
 
 if check_tree.to_string(expected_tree) != check_tree.to_string(tnode):
@@ -110,5 +110,69 @@ tnode = tn.Treenode(5,tn.Treenode(2,tn.Treenode(1,None,None),
 expected_tree =6
 reason = 'tree with more than one node'
 result = main.diff_sum_preorder(tnode)
+if expected_tree != result:
+    print('Test3 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
+
+
+### Test Case for diff_sum_inorder(tnode)
+## First
+
+test_item = 'diff_sum_inorder()'
+tnode = None
+expected_tree = 0
+reason = 'tree with empty node'
+result = main.diff_sum_inorder(tnode)
+
+if expected_tree != result:
+    print('Test1  failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
+
+## second
+
+test_item = 'diff_sum_inorder()'
+tnode = tn.Treenode(3)
+expected_tree = 3
+reason = 'tree with single node'
+result = main.diff_sum_inorder(tnode)
+
+if expected_tree != result:
+    print('Test2 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
+
+
+
+### Test Case for diff_sum_postorder(tnode)
+## First
+
+test_item = 'diff_sum_postorder()'
+tnode = None
+expected_tree = 0
+reason = 'tree with empty node'
+result = main.diff_sum_postorder(tnode)
+
+if expected_tree != result:
+    print('Test1  failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
+
+## second
+test_item = 'diff_sum_postorder()'
+tnode = tn.Treenode(3)
+expected_tree = 3
+reason = 'tree with single node'
+result = main.diff_sum_postorder(tnode)
+
+if expected_tree != result:
+    print('Test2 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
+
+## third
+test_item = 'diff_sum_postorder()'
+tnode = tn.Treenode(5,tn.Treenode(2,tn.Treenode(1,None,None),
+                                     tn.Treenode(1,tn.Treenode(0,None,None),
+                                                 tn.Treenode(1,None,None))),
+                         tn.Treenode(3,tn.Treenode(1,tn.Treenode(0,None,None),
+                                                 tn.Treenode(1,None,None)),
+                                     tn.Treenode(2,tn.Treenode(1,None,None),
+                                                 tn.Treenode(1,tn.Treenode(0,None,None),
+                                                             tn.Treenode(1,None,None)))))
+expected_tree =4
+reason = 'tree with more than one node'
+result = main.diff_sum_postorder(tnode)
 if expected_tree != result:
     print('Test3 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
