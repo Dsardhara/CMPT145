@@ -56,4 +56,4 @@ result = file.ordered(tnode)
 if result != expected:
     print('Test failed: {}: got "{}" expected "{}" -- {}'.format(test_item, result, expected, reason))
 
-print('*** testing complete ***')
+print('*** testing complete ***' )
