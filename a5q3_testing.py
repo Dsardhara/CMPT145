@@ -36,3 +36,24 @@ result = file.ordered(tnode)
 if result != expected:
     print('Test failed: {}: got "{}" expected "{}" -- {}'.format(test_item, result, expected, reason))
 
+test_item = 'ordered()'
+tnode = Treenode(4,
+                   Treenode(6, Treenode(5), Treenode(7)),
+                   Treenode(2, Treenode(1), Treenode(3)))
+expected = False
+reason = 'non-ordered Tree from level-1'
+result = file.ordered(tnode)
+if result != expected:
+    print('Test failed: {}: got "{}" expected "{}" -- {}'.format(test_item, result, expected, reason))
+
+test_item = 'ordered()'
+tnode = Treenode(4,
+                   Treenode(2, None, Treenode(6)),
+                   Treenode(5, Treenode(3), None))
+expected = False
+reason = 'non-ordered Tree in level-2'
+result = file.ordered(tnode)
+if result != expected:
+    print('Test failed: {}: got "{}" expected "{}" -- {}'.format(test_item, result, expected, reason))
+
+print('*** testing complete ***')
