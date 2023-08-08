@@ -46,3 +46,47 @@ main.subst(tnode, t, r)
 
 if check_tree.to_string(expected_tree) != check_tree.to_string(tnode):
     print('Test3 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
+
+### Test Case for copy(tnode)
+## First
+test_item = 'copy()'
+tnode = None
+expected_tree = None
+reason = 'Empty binary tree'
+result = main.copy(tnode)
+
+if check_tree.to_string(expected_tree) != check_tree.to_string(result):
+    print('Test1 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
+
+## second
+test_item = 'copy()'
+tnode = tn.Treenode(3)
+expected_tree = tn.Treenode(3)
+reason = 'Empty binary tree'
+result = main.copy(tnode)
+
+if check_tree.to_string(expected_tree) != check_tree.to_string(result):
+    print('Test2 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
+
+
+## third
+test_item = 'copy()'
+tnode = tn.Treenode(3,tn.Treenode(5,tn.Treenode(9,None)),tn.Treenode(10,tn.Treenode(11,None)))
+expected_tree = tn.Treenode(3,tn.Treenode(5,tn.Treenode(9,None)),tn.Treenode(10,tn.Treenode(11,None)))
+reason = 'Empty binary tree'
+result = main.copy(tnode)
+
+if check_tree.to_string(expected_tree) != check_tree.to_string(result):
+    print('Test3 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
+
+
+### Test Case for copy(tnode)
+## First
+test_item = 'copy()'
+tnode = None
+expected_tree = None
+reason = 'Empty binary tree'
+result = main.copy(tnode)
+
+if check_tree.to_string(expected_tree) != check_tree.to_string(result):
+    print('Test1 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
