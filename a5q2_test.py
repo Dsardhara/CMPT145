@@ -97,3 +97,18 @@ result = main.diff_sum_preorder(tnode)
 if expected_tree != result:
     print('Test2 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
 
+## third
+test_item = 'diff_sum_preorder()'
+tnode = tn.Treenode(5,tn.Treenode(2,tn.Treenode(1,None,None),
+                                     tn.Treenode(1,tn.Treenode(0,None,None),
+                                                 tn.Treenode(1,None,None))),
+                         tn.Treenode(3,tn.Treenode(1,tn.Treenode(0,None,None),
+                                                 tn.Treenode(1,None,None)),
+                                     tn.Treenode(2,tn.Treenode(1,None,None),
+                                                 tn.Treenode(1,tn.Treenode(0,None,None),
+                                                             tn.Treenode(1,None,None)))))
+expected_tree =6
+reason = 'tree with more than one node'
+result = main.diff_sum_preorder(tnode)
+if expected_tree != result:
+    print('Test3 failed: {}: Tree after substitution is not as expected -- {}'.format(test_item, reason))
