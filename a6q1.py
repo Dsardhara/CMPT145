@@ -9,24 +9,23 @@ import numpy as np
 
 ls = []
 
-def Conway(filename):
-    '''
-    this function reads the file and turn data into array
-    then calls the another function and passes the array.
-    :param filename: name of file
-    :return: none
-    '''
 
-    f = open(filename, 'r')
+def Conway(fileName):
+    count = 0
+    global len_vertical, line, y, x
+
+    f = open(fileName, 'r')
     for line in f:
         line = line.rstrip()
+        count += 1
         for i in line:
             ls.append(i)
 
-    # print(ls)
-    global x
-    x = int(m.sqrt(len(ls)))
-    arr = np.array(ls).reshape(x, x)
+    y = count
+    x = len(line)
+    arr = np.array(ls).reshape(y, x)
     f.close()
     return arr
 
+
+print(Conway('input4.txt'))
