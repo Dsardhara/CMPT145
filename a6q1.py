@@ -11,8 +11,9 @@ ls = []
 
 
 def Conway(fileName):
+    global len_vertical, line, y, x, f_name
+    f_name = fileName
     count = 0
-    global len_vertical, line, y, x
 
     f = open(fileName, 'r')
     for line in f:
@@ -24,7 +25,7 @@ def Conway(fileName):
     y = count
     x = len(line)
     arr = np.array(ls).reshape(y, x)
-    print('arr1',arr)
+    print(arr)
     f.close()
     checkNeighbour(arr)
 
@@ -77,9 +78,28 @@ def checkNeighbour(arr1):
             except IndexError:
                 pass
             lifeCount.append(aCount)
-    count_arr = np.array(lifeCount).reshape(y,x)
-    return count_arr
+    count_arr = np.array(lifeCount).reshape(y, x)
+    # print(count_arr)
+    return game_Of_Life(arr1, count_arr)
 
 
+def game_Of_Life(original_arr, list_arr):
+    last_ls = []
+    file = open(f'{f_name}' + '3' + '_updated.txt', 'w+')
+    for i in range(len(original_arr)):
+        for j in range(len(original_arr[i])):
+            if list_arr[i][j] < 2 or list_arr[i][j] > 3:
+                file.write('-')
+                last_ls.append('-')
+            elif (list_arr[i][j] == 2 or list_arr[i][j] == 3) and original_arr[i][j] == '*':
+                file.write('*')
+                last_ls.append('*')
+            elif list_arr[i][j] == 3:
+                file.write('*')
+                last_ls.append('*')
+            else:
+                file.write('-')
+                last_ls.append('-')
+    file.close()
 
-Conway('input4.txt')
+# Conway('input5.txt')
