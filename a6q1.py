@@ -24,11 +24,9 @@ def Conway(fileName):
     y = count
     x = len(line)
     arr = np.array(ls).reshape(y, x)
+    print('arr1',arr)
     f.close()
     checkNeighbour(arr)
-
-
-print(Conway('input4.txt'))
 
 
 def checkNeighbour(arr1):
@@ -44,7 +42,7 @@ def checkNeighbour(arr1):
                 aCount += 1
             # bottom
             try:
-                if arr1[i + 1][j] == '*' and i < x - 1:
+                if arr1[i + 1][j] == '*' and i < y - 1:
                     aCount += 1
             except IndexError:
                 pass
@@ -54,3 +52,34 @@ def checkNeighbour(arr1):
                     aCount += 1
             except IndexError:
                 pass
+            # top-left
+            try:
+                if arr1[i - 1][j - 1] == '*' and i > 0 and j > 0:
+                    aCount += 1
+            except IndexError:
+                pass
+            # bottom-left
+            try:
+                if arr1[i + 1][j - 1] == '*' and i < y - 1 and j > 0:
+                    aCount += 1
+            except IndexError:
+                pass
+            # top_right
+            try:
+                if arr1[i - 1][j + 1] == '*' and i > 0 and j < x - 1:
+                    aCount += 1
+            except IndexError:
+                pass
+            # bottom-right
+            try:
+                if arr1[i + 1][j + 1] == '*' and i < y - 1 and j < x - 1:
+                    aCount += 1
+            except IndexError:
+                pass
+            lifeCount.append(aCount)
+    count_arr = np.array(lifeCount).reshape(y,x)
+    return count_arr
+
+
+
+Conway('input4.txt')
