@@ -12,7 +12,7 @@ ls = []
 
 def Conway(fileName):
     global len_vertical, line, y, x, f_name
-    f_name = fileName
+    f_name = fileName.removesuffix('.txt')
     count = 0
 
     f = open(fileName, 'r')
@@ -36,70 +36,84 @@ def checkNeighbour(arr1):
         for j in range(len(arr1[i])):
             aCount = 0
             # top
-            if arr1[i - 1][j] == '*' and i > 0:
+            if (arr1[i - 1][j] == '*' or arr1[i - 1][j] == 'Z') and i > 0:
                 aCount += 1
             # left
-            if arr1[i][j - 1] == '*' and j > 0:
+            if (arr1[i][j - 1] == '*' or arr1[i][j - 1] == 'Z') and j > 0:
                 aCount += 1
             # bottom
             try:
-                if arr1[i + 1][j] == '*' and i < y - 1:
+                if (arr1[i + 1][j] == '*' or arr1[i + 1][j] == 'Z') and i < y - 1:
                     aCount += 1
             except IndexError:
                 pass
             # right
             try:
-                if arr1[i][j + 1] == '*' and j < x - 1:
+                if (arr1[i][j + 1] == '*' or arr1[i][j + 1] == 'Z') and j < x - 1:
                     aCount += 1
             except IndexError:
                 pass
             # top-left
             try:
-                if arr1[i - 1][j - 1] == '*' and i > 0 and j > 0:
+                if (arr1[i - 1][j - 1] == '*' or arr1[i - 1][j - 1] == 'Z') and i > 0 and j > 0:
                     aCount += 1
             except IndexError:
                 pass
             # bottom-left
             try:
-                if arr1[i + 1][j - 1] == '*' and i < y - 1 and j > 0:
+                if (arr1[i + 1][j - 1] == '*' or arr1[i + 1][j - 1] == 'Z') and i < y - 1 and j > 0:
                     aCount += 1
             except IndexError:
                 pass
             # top_right
             try:
-                if arr1[i - 1][j + 1] == '*' and i > 0 and j < x - 1:
+                if (arr1[i - 1][j + 1] == '*' or arr1[i - 1][j + 1] == 'Z') and i > 0 and j < x - 1:
                     aCount += 1
             except IndexError:
                 pass
             # bottom-right
             try:
-                if arr1[i + 1][j + 1] == '*' and i < y - 1 and j < x - 1:
+                if (arr1[i + 1][j + 1] == '*' or arr1[i + 1][j + 1] == 'Z') and i < y - 1 and j < x - 1:
                     aCount += 1
             except IndexError:
                 pass
             lifeCount.append(aCount)
     count_arr = np.array(lifeCount).reshape(y, x)
-    # print(count_arr)
+    print(count_arr)
     return game_Of_Life(arr1, count_arr)
 
 
 def game_Of_Life(original_arr, list_arr):
     last_ls = []
-    file = open(f'{f_name}' + '3' + '_updated.txt', 'w+')
+    file = open(f'{f_name}' + '_' + '3', 'w+')
     for i in range(len(original_arr)):
         for j in range(len(original_arr[i])):
-            if list_arr[i][j] < 2 or list_arr[i][j] > 3:
+            if (list_arr[i][j] < 2 or list_arr[i][j] > 3) and original_arr[i][j] == '*':
                 file.write('-')
                 last_ls.append('-')
+            elif (list_arr[i][j] < 2 or list_arr[i][j] > 3) and original_arr[i][j] == '-':
+                file.write('Z')
+                last_ls.append('Z')
             elif (list_arr[i][j] == 2 or list_arr[i][j] == 3) and original_arr[i][j] == '*':
                 file.write('*')
                 last_ls.append('*')
-            elif list_arr[i][j] == 3:
+            elif (list_arr[i][j] == 2 or list_arr[i][j] == 3) and original_arr[i][j] == '-':
+                file.write('Z')
+                last_ls.append('Z')
+            elif list_arr[i][j] == 3 and original_arr[i][j] == '*':
                 file.write('*')
                 last_ls.append('*')
+            elif list_arr[i][j] == 3 and original_arr[i][j] == '-':
+                file.write('Z')
+                last_ls.append('Z')
             else:
                 file.write('-')
                 last_ls.append('-')
+        file.write('\n')
     file.close()
+    last_arr = np.array(last_ls).reshape(y, x)
+    print(last_arr)
+    return last_ls
 
-# Conway('input5.txt')
+
+Conway('input6.txt')
