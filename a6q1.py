@@ -7,17 +7,15 @@
 
 import numpy as np
 
-ls = []
-
 
 def Conway(fileName, repetation=3):
-    global len_vertical, line, y, x, f_name, flag, main_repetation, arr
+
+    global line, y, x, f_name, flag, main_repetation, arr
+    ls = []
     main_repetation = repetation
     f_name = fileName.removesuffix('.txt')
 
     count = 0
-
-    # Ask User for console outputs
     user = input("To see the results in the console press Y or press N otherwise: ")
     if user == 'y' or user == 'Y':
         flag = True
@@ -37,7 +35,7 @@ def Conway(fileName, repetation=3):
     # print('original array:\n', arr)
     f.close()
     checkNeighbour(arr, repetation)
-    zombie_neighbour(arr)
+    # zombie_neighbour(arr)
 
 
 def checkNeighbour(arr1, repetation):
@@ -46,7 +44,7 @@ def checkNeighbour(arr1, repetation):
         for j in range(len(arr1[i])):
             aCount = 0
             # top
-            if (arr1[i - 1][j] == '*' or arr1[i - 1][j] == 'Z') and i > 0:
+            if arr1[i - 1][j] == '*'  and i > 0:
                 aCount += 1
             # left
             if arr1[i][j - 1] == '*' and j > 0:
@@ -167,7 +165,7 @@ def game_Of_Life(original_arr, list_arr, repetation):
                 last_ls.append('-')
             elif (living_count == 2 or living_count == 3) and original_arr[i][j] == '*' and call_zombie[i][j] > 0:
                 last_ls.append('Z')
-            elif (living_count == 2 or living_count == 3) and original_arr[i][j] == '*':
+            elif original_arr[i][j] == '*':
                 last_ls.append('*')
             elif original_arr[i][j] == 'Z':
                 last_ls.append('Z')
@@ -199,4 +197,4 @@ def write_file(final):
     print("Program Success...")
 
 
-Conway('input5.txt')
+# Conway('input4.txt')
