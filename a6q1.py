@@ -36,7 +36,8 @@ def Conway(fileName, repetation=3):
     arr = np.array(ls).reshape(y, x)
     print('original array:\n', arr)
     f.close()
-    checkNeighbour(arr,repetation)
+    checkNeighbour(arr, repetation)
+    zombie_neighbour(arr)
 
 
 def checkNeighbour(arr1, repetation):
@@ -88,39 +89,50 @@ def checkNeighbour(arr1, repetation):
                 pass
             lifeCount.append(aCount)
     count_arr = np.array(lifeCount).reshape(y, x)
+    if repetation <= 0:
+        write_file(arr1)
+    else:
+        repetation -= 1
+        game_Of_Life(arr1, count_arr, repetation)
 
 
-def game_Of_Life(original_arr, list_arr):
+def game_Of_Life(original_arr, list_arr, repetation):
     last_ls = []
-    file = open(f'{f_name}' + '_' + '1' + '.txt', 'w+')
+
     for i in range(len(original_arr)):
         for j in range(len(original_arr[i])):
             if (list_arr[i][j] < 2 or list_arr[i][j] > 3) and original_arr[i][j] == '*':
-                file.write('-')
                 last_ls.append('-')
-            # elif (list_arr[i][j] < 2 or list_arr[i][j] > 3) and original_arr[i][j] == '-':
-            #     file.write('Z')
-            #     last_ls.append('Z')
             elif (list_arr[i][j] == 2 or list_arr[i][j] == 3) and original_arr[i][j] == '*':
-                file.write('*')
                 last_ls.append('*')
-            # elif (list_arr[i][j] == 2 or list_arr[i][j] == 3) and original_arr[i][j] == '-':
-            #     file.write('Z')
-            #     last_ls.append('Z')
             elif list_arr[i][j] == 3 and original_arr[i][j] == '*':
-                file.write('*')
                 last_ls.append('*')
             elif (list_arr[i][j] == 3 and original_arr[i][j] == '-') or original_arr[i][j] == 'Z':
-                file.write('Z')
                 last_ls.append('Z')
             else:
-                file.write('-')
                 last_ls.append('-')
-        file.write('\n')
-    file.close()
     last_arr = np.array(last_ls).reshape(y, x)
     print('one step forward:\n', last_arr)
-    return last_ls
+
+    if flag == True:
+        print("\nIteration -", main_repetation - repetation)
+        for row in last_arr:
+            for person in row:
+                print(person, end='')
+            print()
+    checkNeighbour(last_arr, repetation)
+
+
+def write_file(final):
+    latest_file = f'{f_name}' + "_" + f'{main_repetation}' + "steps.txt"
+    f = open(latest_file, "w+")
+    for row in final:
+        for person in row:
+            person = str(person)
+            f.write(person)
+        f.write('\n')
+    f.close()
+    print("Program Success...")
 
 
 Conway('input5.txt')
