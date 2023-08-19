@@ -58,4 +58,22 @@ It intended to find the size of array.
 - By addressing potential edge cases and validating user input, the improved version increased stability while boosting reliability.
   eg: Modification: To handle unexpected user responses and increase overall reliability, robust error handling was introduced.
 
+3) Expanding the Code:
 
+1) Changes Made:
+- The code's capabilities and scope were increased in the modified version by adding zombie logic and multiple iterations.
+  reason: The code's adaptability and applicability were improved by the addition of zombie logic and repetition iterations.
+- To calculate zombie neighbours and control multiple game iterations, new functions were added.
+  reason: The new scenarios with zombie cells and numerous iterations were addressed by the additional features.
+- Initially I did not add living cell and zombie cell count, due to this I faced problem with input6 file.
+
+4) Main points:
+
+key Lessons Learned:
+- Improved readability and maintenance come from clear and consistent variable naming.
+  eg: Code readability and comprehension were hampered by variables with unclear names, such as ls.
+- Debugging time is decreased and understanding is improved by comprehensive function documentation.
+  eg: The comprehension and maintenance of the code were improved by descriptive variable names like f_name and flag.
+- I made function for each functionality which is easy to understand for instructor or other person.
+  eg: neighbour count and zombie count and file maker.
+- One more thing I can do to improve my coding skill, first of all make rough diagram or pathway then start the coding.
