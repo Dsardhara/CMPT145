@@ -1,0 +1,14 @@
+# Name: Darshan Sardhara
+# Instructor Name: Lauresa
+# NSID: WLZ670
+# Course Name: CMPT 145
+# Student ID: 11355677
+# section Number: 01
+
+
+
+Reflection on Design, Implementation, and Testing:
+
+1) Clarity:
+- Some variable names and comments in the old code are not clear enough, making it hard to understand their purpose.
+- In previous code, it only checks orthogonal cells, not diagonal cells. Furthermore, zombie concept is hard to understand.
