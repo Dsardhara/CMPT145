@@ -9,6 +9,21 @@
 
 Reflection on Design, Implementation, and Testing:
 
-1) Clarity:
+1) Clarity and Understanding:
 - Some variable names and comments in the old code are not clear enough, making it hard to understand their purpose.
 - In previous code, it only checks orthogonal cells, not diagonal cells. Furthermore, zombie concept is hard to understand.
+
+2) Forgotten Details:
+- The previous code lacks detailed comments, especially in the list_to_arr function and certain conditions within checkNeighbour.
+- Variable x was used in old code, it wasn't a perfect name as it was working.
+It intended to find the size of array.
+
+3) Flaws and Inflexibility:
+- There is one flaw in my code, which index error. To remove that, I had to use try and except block. That's where my code brittle.
+- previous code was inflexible. If the matrix is not square, then it is no more useful for me. though, new code can check any time of matrix because it is flexible.
+
+4) Strengths and flexibility:
+- Previous and modified code, both versions successfully read input, calculate neighbours, and write results. Modular functions are beneficial.
+- Expanding the code to check diagonal living cell was easy part because I had to change only few conditions.
+
+
