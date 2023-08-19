@@ -7,7 +7,7 @@
 
 
 
-Reflection on Design, Implementation, and Testing:
+1) Reflection on Design, Implementation, and Testing:
 
 1) Clarity and Understanding:
 - Some variable names and comments in the old code are not clear enough, making it hard to understand their purpose.
@@ -25,5 +25,37 @@ It intended to find the size of array.
 4) Strengths and flexibility:
 - Previous and modified code, both versions successfully read input, calculate neighbours, and write results. Modular functions are beneficial.
 - Expanding the code to check diagonal living cell was easy part because I had to change only few conditions.
+
+2) Evaluation Based on Implementation Goals:
+
+1) Correctness:
+- Both versions seem correct, Better comments in the original code would enhance clarity.
+  eg: to run testfile I have to use list_to_array() function which I forgot to mention in docstring why I made it.
+- Previous code was ideal code, for core concept of game of life. But i made few changes which make it advanced version of itself.
+ such as checking diagonal, and adding zombie cell.
+
+2) Efficiency:
+- Calculations are accurate, but nested loops might be inefficient for larger inputs. Optimization could be improved.
+ eg: checkNeighbour() and zombie_neighbour() might raise for larger size of grid.
+- The modified version maintained efficiency by maximising the use of loops for calculations and adhering to best practises for array manipulation.
+ ex: The checkNeighbour function made efficient use of Numpy to reshape arrays and carry out calculate.
+
+3) Reusability:
+- The original code was not parameterized and was not reusable, which limited its adaptability to different scenarios.
+  eg: Original: The cell types' hardcoded values made it difficult to adapt to various scenarios involving cells of different types.
+- By adding parameters and user-defined preferences, the modified version greatly increased code versatility and reusability.
+  eg: User-defined parameters, such as file name and repetition count, improved reuse and made the code flexible for use in a variety of situations.
+
+4) Adaptability:
+- Due to hardcoded values and restricted parameters, the original code had a difficult time adapting.
+  eg: The code's ability to accommodate new cell types or rules was constrained by the hardcoded values.
+- The modified version improved adaptability by incorporating new logic for zombie cells and allowing users to control iterations.
+  eg: User-controlled parameters provided adaptability for custom cell types and rules through multiple iterations.
+
+5) Reliability:
+- Although the original version lacked adequate error handling, both versions showed reliability for typical inputs.
+  eg: Inadequate error handling could cause crashes as a result of missing input files or unexpected responses.
+- By addressing potential edge cases and validating user input, the improved version increased stability while boosting reliability.
+  eg: Modification: To handle unexpected user responses and increase overall reliability, robust error handling was introduced.
 
 
